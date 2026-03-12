@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Sys Reviewer Flashcards</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, silver, #300000);
+    color: white;
+}
+
+header {
+    background: black;
+    padding: 25px 10px;
+    text-align: center;
+}
+header h1 {
+    color: #FFD700;
+    font-size: 28px;
+    margin: 0;
+}
+
+.menu {
+    text-align: center;
+    margin: 25px 0;
+}
+button {
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: maroon;
+    color: white;
+    transition: all 0.3s ease;
+}
+button:hover {
+    background: #FFD700;
+    color: black;
+}
+
+.container {
+    display: none;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: black;
+    padding: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+.card .front {
+    display: block;
+}
+.card .back {
+    display: none;
+    color: #FFD700;
+    font-weight: bold;
+}
+
+.highlight {
+    color: #FFD700;
+    font-weight: bold;
+}
+
+.card pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-x: auto;
+    font-family: monospace;
+    background: #111;
+    padding: 10px;
+    border-radius: 8px;
+    color: #FFD700;
+}
+
+@media(max-width: 1024px) {
+    button {
+        padding: 14px 28px;
+        font-size: 17px;
+    }
+}
+
+@media(max-width: 768px) {
+    button {
+        width: 90%;
+        font-size: 16px;
+        padding: 15px 25px;
+    }
+    .card {
+        min-height: 140px;
+        padding: 18px;
+        font-size: 15px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+}
+
+@media(max-width: 480px) {
+    header h1 {
+        font-size: 22px;
+    }
+    .container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 15px;
+        gap: 15px;
+    }
+    .card {
+        min-height: 120px;
+        padding: 15px;
+        font-size: 14px;
+    }
+    button {
+        font-size: 15px;
+        padding: 12px 20px;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+<h1>Web Sys Reviewer</h1>
+</header>
+
+<div class="menu">
+<button onclick="showLesson()">📘 Lesson Reviewer</button>
+<button onclick="showExam()">📝 Exam Reviewer</button>
+</div>
+
+<!-- LESSON REVIEWER -->
+<div id="lesson" class="container">
+
+<!-- LESSON FLASHCARDS -->
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>Responsive Web Design</h3>
+    <p>Website automatically adjusts to different devices.</p></div>
+    <div class="back">Ensures <span class="highlight">accessibility</span> and <span class="highlight">readability</span> on any screen size.</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>CSS Grid Layout</h3>
+    <p>Organizes content into rows and columns.</p></div>
+    <div class="back">Works in <span class="highlight">two dimensions</span>: Rows and Columns for flexible layouts.</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>Basic Grid Syntax</h3>
+    <pre>main { display: grid; grid-template
+        -columns: 30% 30% 30%; }</pre></div>
+    <div class="back"><span class="highlight">display: grid;</span> activates grid layout.<br><span class="highlight">grid-template-columns</span> defines number and width of columns.</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>Grid Example Structure</h3>
+    <p>&lt;main&gt;&lt;article&gt;...&lt;/article&gt;&lt;aside&gt;...&lt;/aside&gt;&lt;/main&gt;</p></div>
+    <div class="back">Article = main content<br>Aside = sidebar content<br>Use <span class="highlight">row-gap</span> and <span class="highlight">column-gap</span> to add spacing.</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>HTML Tags: &lt;main&gt;, &lt;article&gt;, &lt;aside&gt;</h3>
+    <p>Important HTML tags</p></div>
+    <div class="back">&lt;main&gt; = main content<br>&lt;article&gt; = independent content<br>&lt;aside&gt; = secondary content</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>Viewport & Meta Tag</h3>
+    <p>Visible area on screen</p></div>
+    <div class="back"><pre>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</pre>
+    width=device-width → match device width<br>initial-scale=1.0 → initial zoom level</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>Media Query</h3>
+    <p>CSS rules that change depending on screen size</p></div>
+    <div class="back"><pre>@media screen and (min-width:600px){ main { display:flex; } }</pre>
+    Logic: <span class="highlight">and</span>, <span class="highlight">only</span>, <span class="highlight">not</span></div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>Breakpoint</h3>
+    <p>Screen width where layout changes</p></div>
+    <div class="back">Example: <span class="highlight">min-width:600px</span></div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>Responsive Images</h3>
+    <p>CSS example: <span class="highlight">.responsive</span></p><pre>img { width:100%; height:auto; }</pre></div>
+    <div class="back">Maintains proportions.<br>Use <span class="highlight">max-width:100%</span> to prevent enlargement.</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>Responsive Video</h3>
+    <pre>video { width:100%; height:auto; }</pre></div>
+    <div class="back">Video scales according to screen size, same as images.</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>JavaScript Basics</h3>
+    <p>Makes websites <span class="highlight">interactive</span></p></div>
+    <div class="back">Works with HTML and CSS for dynamic interactivity like clicks, hovers, validations.</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>Separation of Concerns</h3>
+    <p>Separate HTML, CSS, JS files</p></div>
+    <div class="back">index.html = structure<br>style.css = design<br>script.js = functionality</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>Internal vs External JavaScript</h3>
+    <p>Internal: inside HTML</p></div>
+    <div class="back">External: in separate .js file → cleaner, reusable code</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>JS Statements & Objects</h3>
+    <p>Statements are one line of code; objects contain data & methods</p></div>
+    <div class="back">Example: <pre>bankLoan.calcPayments(60);</pre></div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>JS Output Methods</h3>
+    <p>document.write(), console.log(), alert()</p></div>
+    <div class="back">Examples: <pre>console.log("Hello")<br>alert("Hi")</pre></div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>JS Functions & Operators</h3>
+    <p>Functions perform tasks; Operators perform calculations & comparisons</p></div>
+    <div class="back">
+        Assignment: = <br>
+        Arithmetic: + - * / % <br>
+        Logical: && || ! <br>
+        Comparison: == === < > <= >=</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>Variables, Arrays, Control Flow, Loops</h3>
+    <p>JS stores data, repeats code, and manages decisions</p></div>
+    <div class="back">
+        Variables: let/var <br>
+        Arrays: store multiple values <br>
+        Control Flow: if/else <br>
+        Loops: for, while, do while</div>
+</div>
+
+<!-- LESSON REVIEWER END -->
+
+</div>
+
+<!-- EXAM REVIEWER -->
+<!-- EXAM REVIEWER FULL FLASHCARDS -->
+<div id="exam" class="container">
+
+<!-- PART 1: Identification -->
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>1. Web design approach adjusting to devices</h3></div>
+    <div class="back highlight">Responsive Web Design</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>2. CSS layout system in rows and columns</h3></div>
+    <div class="back highlight">CSS Grid</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>3. CSS property to activate grid</h3></div>
+    <div class="back highlight">display: grid</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>4. HTML tag for main content</h3></div>
+    <div class="back highlight">&lt;main&gt;</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>5. HTML tag for independent content</h3></div>
+    <div class="back highlight">&lt;article&gt;</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>6. HTML tag for secondary content</h3></div>
+    <div class="back highlight">&lt;aside&gt;</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>7. Visible area on a screen</h3></div>
+    <div class="back highlight">Viewport</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>8. Meta tag controlling mobile display</h3></div>
+    <div class="back highlight">viewport meta tag</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>9. CSS rule changing styles based on screen size</h3></div>
+    <div class="back highlight">Media Query</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>10. Screen width where layout changes</h3></div>
+    <div class="back highlight">Breakpoint</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>11. Programming language for website interactivity</h3></div>
+    <div class="back highlight">JavaScript</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>12. Principle separating HTML, CSS, and JS files</h3></div>
+    <div class="back highlight">Separation of Concerns</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>13. JavaScript written inside HTML file</h3></div>
+    <div class="back highlight">Internal JavaScript</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>14. JavaScript in separate .js file</h3></div>
+    <div class="back highlight">External JavaScript</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>15. Notes ignored by browser</h3></div>
+    <div class="back highlight">Comments</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>16. Single line of executable JS code</h3></div>
+    <div class="back highlight">Statement</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>17. Reusable block of code to perform a task</h3></div>
+    <div class="back highlight">Function</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>18. Operator used to assign value to variable</h3></div>
+    <div class="back highlight">= (Assignment Operator)</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>19. Operator comparing value AND data type</h3></div>
+    <div class="back highlight">===</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>20. Data structure storing multiple values</h3></div>
+    <div class="back highlight">Array</div>
+</div>
+
+<!-- PART 2: Multiple Choice -->
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>21. CSS property defining number of columns in grid</h3></div>
+    <div class="back highlight">grid-template-columns</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>22. Tag containing main content</h3></div>
+    <div class="back highlight">&lt;main&gt;</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>23. Tag for blog posts/articles</h3></div>
+    <div class="back highlight">&lt;article&gt;</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>24. CSS property keeping correct image proportion</h3></div>
+    <div class="back highlight">height:auto</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>25. JS function showing popup message</h3></div>
+    <div class="back highlight">alert()</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>26. JS function printing to browser console</h3></div>
+    <div class="back highlight">console.log()</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>27. Operator returning remainder</h3></div>
+    <div class="back highlight">%</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>28. Logical operator meaning AND</h3></div>
+    <div class="back highlight">&&</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>29. Comparison operator checking value AND type</h3></div>
+    <div class="back highlight">===</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>30. What does x++ do?</h3></div>
+    <div class="back highlight">Adds 1 to x</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>31. JS keywords for declaring variables</h3></div>
+    <div class="back highlight">let and var</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>32. Type of data "Hello"</h3></div>
+    <div class="back highlight">String</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>33. Structure repeating code</h3></div>
+    <div class="back highlight">Loop</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>34. Loop always running at least once</h3></div>
+    <div class="back highlight">do while loop</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>35. Logical operator meaning OR</h3></div>
+    <div class="back highlight">||</div>
+</div>
+
+<!-- PART 3: True or False -->
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>36. CSS Grid works only in one dimension</h3></div>
+    <div class="back highlight">FALSE</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>37. &lt;aside&gt; tag is used for secondary content</h3></div>
+    <div class="back highlight">TRUE</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>38. Media queries help make websites responsive</h3></div>
+    <div class="back highlight">TRUE</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>39. JavaScript is only used for designing websites</h3></div>
+    <div class="back highlight">FALSE</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>40. External JS is written inside HTML</h3></div>
+    <div class="back highlight">FALSE</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>41. Comments in JS are ignored by browser</h3></div>
+    <div class="back highlight">TRUE</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>42. === compares value and data type</h3></div>
+    <div class="back highlight">TRUE</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>43. Arrays can store multiple values</h3></div>
+    <div class="back highlight">TRUE</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>44. A loop repeats a block of code</h3></div>
+    <div class="back highlight">TRUE</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>45. alert() function displays popup</h3></div>
+    <div class="back highlight">TRUE</div>
+</div>
+
+<!-- PART 4: Predict Output -->
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>46. let x = 5; x++; console.log(x);</h3></div>
+    <div class="back highlight">6</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>47. let a = 10; let b = 5; console.log(a + b);</h3></div>
+    <div class="back highlight">15</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>48. let x = 10; console.log(x > 5);</h3></div>
+    <div class="back highlight">true</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>49. console.log(10 % 3);</h3></div>
+    <div class="back highlight">1</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>50. let name = "Anna"; console.log(name);</h3></div>
+    <div class="back highlight">Anna</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>51. let x = 7; x--; console.log(x);</h3></div>
+    <div class="back highlight">6</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>52. console.log(5 == "5");</h3></div>
+    <div class="back highlight">true</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>53. console.log(5 === "5");</h3></div>
+    <div class="back highlight">false</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>54. let x = 3; console.log(x * 4);</h3></div>
+    <div class="back highlight">12</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>55. console.log(20 / 5);</h3></div>
+    <div class="back highlight">4</div>
+</div>
+
+<!-- PART 5: Fill in the Code -->
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>56. _____ x = 10;</h3></div>
+    <div class="back highlight">let</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>57. console._____("Hello");</h3></div>
+    <div class="back highlight">log</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>58. if(x ____ 5){ console.log("Greater"); }</h3></div>
+    <div class="back highlight">&gt;</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>59. for(let i = 0; i < 5; i____){ console.log(i); }</h3></div>
+    <div class="back highlight">++</div>
+</div>
+<div class="card" onclick="flipCard(this)">
+    <div class="front"><h3>60. let months = ["Jan","Feb","Mar"]; console.log(months[___]);</h3></div>
+    <div class="back highlight">1</div>
+</div>
+
+</div>
+<script>
+function showLesson(){
+    document.getElementById("lesson").style.display="grid";
+    document.getElementById("exam").style.display="none";
+}
+function showExam(){
+    document.getElementById("exam").style.display="grid";
+    document.getElementById("lesson").style.display="none";
+}
+function flipCard(card){
+    const front = card.querySelector('.front');
+    const back = card.querySelector('.back');
+    if(front.style.display !== "none"){
+        front.style.display = "none";
+        back.style.display = "block";
+    } else{
+        front.style.display = "block";
+        back.style.display = "none";
+    }
+}
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => {
+    card.addEventListener('touchstart', () => flipCard(card));
+});
+</script>
+
+</body>
+</html>
