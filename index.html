@@ -545,23 +545,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     cards.forEach(card => {
-        card.addEventListener('click', () => flipCard(card));
-        card.addEventListener('touchstart', () => flipCard(card));
+        card.addEventListener('click', () => card.classList.toggle('flipped'));
+        card.addEventListener('touchstart', () => card.classList.toggle('flipped'));
     });
-
-    function flipCard(card){
-        const front = card.querySelector('.front');
-        const back = card.querySelector('.back');
-        if(front.style.display !== "none"){
-            front.style.display = "none";
-            back.style.display = "block";
-        } else{
-            front.style.display = "block";
-            back.style.display = "none";
-        }
-    }
 });
 </script>
 
 </body>
 </html>
+
