@@ -527,28 +527,39 @@ button:hover {
 
 </div>
 <script>
-function showLesson(){
-    document.getElementById("lesson").style.display="grid";
-    document.getElementById("exam").style.display="none";
-}
-function showExam(){
-    document.getElementById("exam").style.display="grid";
-    document.getElementById("lesson").style.display="none";
-}
-function flipCard(card){
-    const front = card.querySelector('.front');
-    const back = card.querySelector('.back');
-    if(front.style.display !== "none"){
-        front.style.display = "none";
-        back.style.display = "block";
-    } else{
-        front.style.display = "block";
-        back.style.display = "none";
+document.addEventListener('DOMContentLoaded', () => {
+    const lessonBtn = document.getElementById('lessonBtn');
+    const examBtn = document.getElementById('examBtn');
+    const lessonContainer = document.getElementById('lesson');
+    const examContainer = document.getElementById('exam');
+    const cards = document.querySelectorAll('.card');
+
+    lessonBtn.addEventListener('click', () => {
+        lessonContainer.style.display = 'grid';
+        examContainer.style.display = 'none';
+    });
+
+    examBtn.addEventListener('click', () => {
+        examContainer.style.display = 'grid';
+        lessonContainer.style.display = 'none';
+    });
+
+    cards.forEach(card => {
+        card.addEventListener('click', () => flipCard(card));
+        card.addEventListener('touchstart', () => flipCard(card));
+    });
+
+    function flipCard(card){
+        const front = card.querySelector('.front');
+        const back = card.querySelector('.back');
+        if(front.style.display !== "none"){
+            front.style.display = "none";
+            back.style.display = "block";
+        } else{
+            front.style.display = "block";
+            back.style.display = "none";
+        }
     }
-}
-const cards = document.querySelectorAll('.card');
-cards.forEach(card => {
-    card.addEventListener('touchstart', () => flipCard(card));
 });
 </script>
 
